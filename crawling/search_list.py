@@ -56,7 +56,7 @@ def recipe_list(search) :
     if(len(recipe_list)!=0) :
         print(recipe_list)
     else:
-        print("nono")
+        print({'nono':'nono'})
 
 
 recipe_list(sys.argv[1])
