@@ -53,7 +53,11 @@ def recipe_list(search) :
     for i in range(len(title)) :
         recipe_list.append({"title" : f"{title[i]}", "recipe_link" : f"{recipe[i]}", "thumbnail_link" : f"{thumb_nail[i]}"})
 
-    print(recipe_list)
+    if(len(recipe_list)>0) :
+        print(recipe_list)
+    else :
+        print([{}])
+
 
 
 recipe_list(sys.argv[1])
