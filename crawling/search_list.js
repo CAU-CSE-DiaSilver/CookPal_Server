@@ -9,12 +9,10 @@ router.post('/', (req, res)=>{
         const racipe_list = spawn('python3', ['./crawling/search_list.py', search]);
         racipe_list.stdout.on('data', (result)=>{
             try{
-                console.log(search+"start")
                 let result_list = result.toString()
                 result_list = result_list.replace(/'/g, '"')
                 res.json(JSON.parse(result_list))
-                console.log(search+"finish")
-            }catch(error){}
+            }catch(error){console.log(error)}
         });
     }
 });

@@ -21,8 +21,8 @@ def recipe_get(recipe) :
             
             json_data = json.loads(script.string)
             if json_data["@type"] == "Recipe":
-                recipe_out["name"] = json_data["name"]
-                recipe_out["description"] = json_data["description"]
+                recipe_out["name"] = json_data["name"].replace("'", "\*").replace("\"", "\*")
+                recipe_out["description"] = json_data["description"].replace("'", "\*").replace("\"", "\*")
                 recipe_out["image"] = json_data["image"]
                 recipe_out["totalTime"] = json_data["totalTime"]
                 recipe_out["recipeYield"] = json_data["recipeYield"]
@@ -36,7 +36,7 @@ def recipe_get(recipe) :
                 recipe_list = json_data["recipeInstructions"]
                 for step in recipe_list :
                     if step["@type"] == "HowToStep":
-                        recipe_out["recipe_list"].append({"step" : step["text"], "image" : step["image"]})
+                        recipe_out["recipe_list"].append({"step" : step["text"].replace("'", "\*").replace("\"", "\*"), "image" : step["image"]})
                 
     print(recipe_out)
 
