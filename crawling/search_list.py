@@ -13,7 +13,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 def recipe_list(search) :
     # 검색어 링크 설정
     uni_search = urllib.parse.quote(search)
-    link = f"https://www.10000recipe.com/recipe/list.html?q={uni_search}"
+    link = f"https://www.10000recipe.com/recipe/list.html?q={uni_search}&order=reco&page=1"
 
     # 링크에서 html 가져오기
     resp = urlopen(link)
