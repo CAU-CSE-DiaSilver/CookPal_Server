@@ -9,11 +9,9 @@ router.post('/', (req, res)=>{
         const racipe_info = spawn('python3', ['./crawling/recipe_get.py', recipe_url]);
         try{
             racipe_info.stdout.on('data', (result)=>{
-                console.log(recipe_url+"start")
                 let result_recipe = result.toString()
                 result_recipe = result_recipe.replace(/'/g, '"')
                 res.json(JSON.parse(result_recipe))
-                console.log(recipe_url+"finish")
             });
         }catch(error){}
     }
