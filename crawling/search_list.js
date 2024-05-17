@@ -6,6 +6,7 @@ const spawn = require('child_process').spawn;
 router.post('/', (req, res)=>{
     let search = req.body.recipe_name;
     if(search!=undefined){
+        console.log(search);
         const racipe_list = spawn('python3', ['./crawling/search_list.py', search]);
         racipe_list.stdout.on('data', (result)=>{
             try{
