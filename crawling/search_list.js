@@ -14,7 +14,7 @@ router.post('/', (req, res)=>{
                 result_list = result_list.replace(/'/g, '"')
                 console.log(result_list)
                 res.json(JSON.parse(result_list))
-            }catch(error){console.log(error)}
+            }catch(error){console.log("error")}
         });
     }
 });
