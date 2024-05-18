@@ -51,7 +51,7 @@ def recipe_list(search) :
 
     recipe_list = []
     for i in range(len(title)) :
-        title[i] = title[i].replace("\'", "\*").replace("\"", "\*")
+        title[i] = title[i].replace("\'", "*").replace("\"", "*")
         recipe_list.append({"title" : f"{title[i]}", "recipe_link" : f"{recipe[i]}", "thumbnail_link" : f"{thumb_nail[i]}"})
 
     if(len(recipe_list)>0) :
