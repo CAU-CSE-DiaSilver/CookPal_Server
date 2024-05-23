@@ -12,9 +12,9 @@ router.post('/', (req, res)=>{
             try{
                 let result_list = result.toString()
                 result_list = result_list.replace(/'/g, '"')
-                console.log(JSON.parse(result_list))
+                console.log(result_list)
                 res.json(JSON.parse(result_list))
-            }catch(error){console.log(error)}
+            }catch(error){console.log("error")}
         });
     }
 });
