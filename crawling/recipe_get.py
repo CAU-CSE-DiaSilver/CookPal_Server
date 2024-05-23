@@ -33,10 +33,12 @@ def recipe_get(recipe) :
                     recipe_out["ingredients"].append(ingredient)
                 
                 recipe_out["recipe_list"] = []
+                recipe_out["recipe_text"] = []
                 recipe_list = json_data["recipeInstructions"]
                 for step in recipe_list :
                     if step["@type"] == "HowToStep":
                         recipe_out["recipe_list"].append({"step" : step["text"].replace("'", "\*").replace("\"", "\*"), "image" : step["image"]})
+                        recipe_out["recipe_text"].append({step["text"].replace("'", "\*").replace("\"", "\*")})
                 
     print(recipe_out)
 
