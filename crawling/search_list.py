@@ -6,9 +6,15 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup # http 크롤링
 import urllib.parse
 import json
+import unicodedata
 
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
+
+def clean_json_string(json_string):
+    # 유니코드가 아닌 문자를 제거하거나 대체
+    cleaned_string = ''.join(ch if unicodedata.category(ch)[0] != 'C' else ' ' for ch in json_string)
+    return cleaned_string
 
 def recipe_list(search) :
     # 검색어 링크 설정
@@ -51,7 +57,7 @@ def recipe_list(search) :
 
     recipe_list = []
     for i in range(len(title)) :
-        title[i] = title[i].replace("\'", "*").replace("\"", "*")
+        title[i] = clean_json_string(title[i].replace("\'", "*").replace("\"", "*"))
         recipe_list.append({"title" : f"{title[i]}", "recipe_link" : f"{recipe[i]}", "thumbnail_link" : f"{thumb_nail[i]}"})
 
     if(len(recipe_list)>0) :
