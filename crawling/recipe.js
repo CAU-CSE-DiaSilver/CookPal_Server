@@ -12,7 +12,7 @@ router.post('/', (req, res)=>{
             racipe_info.stdout.on('data', (result)=>{
                 let result_recipe = result.toString()
                 result_recipe = result_recipe.replace(/'/g, '"')
-                console.log(JSON.parse(result_recipe))
+                console.log(result_recipe)
                 res.json(JSON.parse(result_recipe))
             });
         }catch(error){}
