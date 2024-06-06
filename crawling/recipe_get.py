@@ -37,9 +37,11 @@ def recipe_get(recipe) :
                 recipe_list = json_data["recipeInstructions"]
                 for step in recipe_list :
                     if step["@type"] == "HowToStep":
-                        recipe_out["recipe_list"].append({"step" : step["text"].replace("'", "\*").replace("\"", "\*").replace(u'\xa0', u''), "image" : step["image"]})
+                        if "image" in step :
+                            recipe_out["recipe_list"].append({"step" : step["text"].replace("'", "\*").replace("\"", "\*").replace(u'\xa0', u''), "image" : step["image"]})
+                        else :
+                            recipe_out["recipe_list"].append({"step" : step["text"].replace("'", "\*").replace("\"", "\*").replace(u'\xa0', u''), "image" : ""})
                         recipe_out["recipe_text"].append(step["text"].replace("'", "\*").replace("\"", "\*").replace(u'\xa0', u''))
-                
     print(recipe_out)
 
 recipe_get(sys.argv[1])
